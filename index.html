@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Morse Hand</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="hero">
+        <p class="eyebrow">WEBCAM · HAND TRACKING · MORSE</p>
+        <h1>Chạm tay, viết <em>Morse.</em></h1>
+        <p class="intro">Dùng nắm tay cho dấu chấm, bàn tay mở cho dấu gạch. Giữ cử chỉ ổn định một khoảnh khắc để nhập.</p>
+      </section>
+
+      <section class="workspace">
+        <div class="camera-card">
+          <div class="camera-head"><span class="live-dot"></span><span id="cameraStatus">Camera chưa bật</span></div>
+          <div class="camera-stage">
+            <video id="inputVideo" playsinline></video>
+            <canvas id="outputCanvas"></canvas>
+            <div id="gestureBadge" class="gesture-badge">Đang chờ tay</div>
+          </div>
+          <button id="startButton" class="primary-button">Bật camera</button>
+        </div>
+
+        <aside class="decoder-card">
+          <div class="decoder-head"><span>BẢN DỊCH</span><button id="clearAll" class="text-button">Xóa tất cả</button></div>
+          <div id="decodedText" class="decoded-text" aria-live="polite">—</div>
+          <div class="morse-row"><span id="morseInput" class="morse-input">Chưa có ký tự</span><span id="lastSignal" class="signal-hint">Sẵn sàng</span></div>
+          <div class="actions">
+            <button id="letterButton">Thêm chữ</button>
+            <button id="spaceButton">Dấu cách</button>
+            <button id="backspaceButton">Xóa tín hiệu</button>
+          </div>
+          <p class="tip">Mẹo: Sau khi ra dấu chấm/gạch, đưa tay về trạng thái khác hoặc chờ khoảng 0,8 giây trước khi ra tín hiệu tiếp theo.</p>
+        </aside>
+      </section>
+
+      <section class="guide">
+        <div><strong>●</strong><span>Nắm tay</span><b>Dấu chấm</b></div>
+        <div><strong>━</strong><span>Mở đủ 5 ngón</span><b>Dấu gạch</b></div>
+        <div><strong>↵</strong><span>Nút “Thêm chữ”</span><b>Chốt ký tự</b></div>
+      </section>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+:root { --ink:#17201c; --muted:#69756d; --paper:#f4f1e9; --lime:#c9f26b; --orange:#ff7446; --line:#d7d5cc; }
+* { box-sizing:border-box; }
+body { margin:0; color:var(--ink); background:var(--paper); font-family:Manrope, sans-serif; }
+.app-shell { max-width:1120px; margin:auto; padding:72px 28px 52px; }
+.hero { max-width:680px; margin-bottom:42px; }
+.eyebrow,.decoder-head { color:var(--muted); font-family:"DM Mono", monospace; font-size:11px; letter-spacing:.12em; }
+h1 { margin:11px 0 12px; font-size:clamp(44px,7vw,78px); line-height:.98; letter-spacing:-.065em; }
+h1 em { color:var(--orange); font-style:normal; }
+.intro { max-width:580px; margin:0; color:var(--muted); font-size:16px; line-height:1.7; }
+.workspace { display:grid; grid-template-columns:1.25fr .75fr; gap:18px; }
+.camera-card,.decoder-card { border:1px solid var(--line); border-radius:20px; background:#fbfaf5; overflow:hidden; }
+.camera-head { height:48px; display:flex; align-items:center; gap:9px; padding:0 17px; font-size:13px; font-weight:600; border-bottom:1px solid var(--line); }
+.live-dot { width:8px; height:8px; background:#abb3ad; border-radius:50%; }.active .live-dot { background:var(--orange); box-shadow:0 0 0 4px #ff744626; }
+.camera-stage { position:relative; aspect-ratio:16/10; background:#202923; overflow:hidden; }
+video,canvas { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transform:scaleX(-1); }
+.gesture-badge { position:absolute; left:14px; bottom:14px; padding:9px 12px; border-radius:9px; color:#fff; background:#17201ccd; font:12px "DM Mono", monospace; transform:none; }
+button { cursor:pointer; border:0; font:600 13px Manrope, sans-serif; }.primary-button { width:calc(100% - 28px); margin:14px; padding:13px; border-radius:10px; background:var(--lime); color:var(--ink); }.primary-button:disabled { opacity:.6; cursor:wait; }
+.decoder-card { padding:23px; display:flex; min-height:350px; flex-direction:column; }.decoder-head { display:flex; justify-content:space-between; align-items:center; }.text-button { color:var(--muted); background:transparent; text-decoration:underline; font-size:12px; }
+.decoded-text { min-height:110px; padding:24px 0 18px; font-size:38px; font-weight:800; letter-spacing:-.045em; word-break:break-word; }.morse-row { padding:13px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); display:flex; align-items:center; justify-content:space-between; gap:8px; }.morse-input { font:20px "DM Mono",monospace; letter-spacing:.13em; }.signal-hint { color:var(--muted); font-size:11px; text-align:right; }
+.actions { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:14px; }.actions button { padding:11px 8px; border-radius:8px; background:#e9e7df; }.actions button:first-child { background:var(--ink); color:#fff; }.actions button:last-child { grid-column:span 2; }
+.tip { margin:auto 0 0; padding-top:20px; color:var(--muted); font-size:12px; line-height:1.55; }.guide { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:18px; }.guide div { padding:16px; border:1px solid var(--line); border-radius:13px; background:#eeeae0; }.guide strong { display:block; color:var(--orange); font-size:22px; }.guide span,.guide b { display:block; }.guide span { margin-top:8px; font-size:12px; }.guide b { margin-top:3px; font-size:12px; color:var(--muted); font-weight:500; }
+@media (max-width:720px) { .app-shell{padding:42px 16px 30px}.workspace{grid-template-columns:1fr}.decoder-card{min-height:300px}.guide{grid-template-columns:1fr}.hero{margin-bottom:28px} }
