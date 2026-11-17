@@ -9,51 +9,16 @@ body { margin:0; color:var(--ink); background:var(--paper); font-family:Manrope,
 h1 { margin:11px 0 12px; font-size:clamp(44px,7vw,78px); line-height:.98; letter-spacing:-.065em; }
 h1 em { color:var(--orange); font-style:normal; }
 .intro { max-width:580px; margin:0; color:var(--muted); font-size:16px; line-height:1.7; }
-.intro em { color:var(--ink); font-style:normal; font-weight:700; background:linear-gradient(transparent 62%, var(--lime) 62%); }
 .workspace { display:grid; grid-template-columns:1.25fr .75fr; gap:18px; }
 .camera-card,.decoder-card { border:1px solid var(--line); border-radius:20px; background:#fbfaf5; overflow:hidden; }
 .camera-head { height:48px; display:flex; align-items:center; gap:9px; padding:0 17px; font-size:13px; font-weight:600; border-bottom:1px solid var(--line); }
 .live-dot { width:8px; height:8px; background:#abb3ad; border-radius:50%; }.active .live-dot { background:var(--orange); box-shadow:0 0 0 4px #ff744626; }
-.camera-card { display:flex; flex-direction:column; }
-.camera-stage { position:relative; flex:1 1 auto; min-height:250px; aspect-ratio:16/10; background:#202923; overflow:hidden; }
-.camera-stage video, .camera-stage canvas { display:block; }
+.camera-stage { position:relative; aspect-ratio:16/10; background:#202923; overflow:hidden; }
 video,canvas { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transform:scaleX(-1); }
 .gesture-badge { position:absolute; left:14px; bottom:14px; padding:9px 12px; border-radius:9px; color:#fff; background:#17201ccd; font:12px "DM Mono", monospace; transform:none; }
-button { cursor:pointer; border:0; font:600 13px Manrope, sans-serif; }.primary-button { width:calc(100% - 28px); margin:14px; margin-top:auto; padding:13px; border-radius:10px; background:var(--lime); color:var(--ink); }.primary-button:disabled { opacity:.6; cursor:wait; }
+button { cursor:pointer; border:0; font:600 13px Manrope, sans-serif; }.primary-button { width:calc(100% - 28px); margin:14px; padding:13px; border-radius:10px; background:var(--lime); color:var(--ink); }.primary-button:disabled { opacity:.6; cursor:wait; }
 .decoder-card { padding:23px; display:flex; min-height:350px; flex-direction:column; }.decoder-head { display:flex; justify-content:space-between; align-items:center; }.text-button { color:var(--muted); background:transparent; text-decoration:underline; font-size:12px; }
-.decoded-text { min-height:78px; padding:24px 0 18px; font-size:38px; font-weight:800; letter-spacing:-.045em; word-break:break-word; }.morse-row { padding:13px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); display:flex; align-items:center; justify-content:space-between; gap:8px; }.morse-input { font:20px "DM Mono",monospace; letter-spacing:.13em; }.signal-hint { color:var(--muted); font-size:11px; text-align:right; }
+.decoded-text { min-height:110px; padding:24px 0 18px; font-size:38px; font-weight:800; letter-spacing:-.045em; word-break:break-word; }.morse-row { padding:13px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); display:flex; align-items:center; justify-content:space-between; gap:8px; }.morse-input { font:20px "DM Mono",monospace; letter-spacing:.13em; }.signal-hint { color:var(--muted); font-size:11px; text-align:right; }
 .actions { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:14px; }.actions button { padding:11px 8px; border-radius:8px; background:#e9e7df; }.actions button:first-child { background:var(--ink); color:#fff; }.actions button:last-child { grid-column:span 2; }
-.tip { margin:0; padding-top:18px; color:var(--muted); font-size:12px; line-height:1.55; }.guide { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:18px; }.guide div { padding:16px; border:1px solid var(--line); border-radius:13px; background:#eeeae0; }.guide strong { display:block; color:var(--orange); font-size:22px; }.guide span,.guide b { display:block; }.guide span { margin-top:8px; font-size:12px; }.guide b { margin-top:3px; font-size:12px; color:var(--muted); font-weight:500; }
-
-/* --- Nhãn chế độ phân loại (k-NN / Heuristic) trên thanh tiêu đề camera --- */
-.camera-head { position:relative; }
-.mode-badge { margin-left:auto; padding:4px 9px; border:1px solid var(--line); border-radius:999px; color:var(--muted); background:#eeeae0; font:500 10px "DM Mono",monospace; letter-spacing:.06em; text-transform:uppercase; white-space:nowrap; }
-.mode-badge.is-knn { border-color:transparent; background:var(--lime); color:var(--ink); }
-
-/* --- Gợi ý Top 3 từ thuật toán A* --- */
-.suggest-row { display:flex; align-items:center; gap:10px; padding:12px 0; border-bottom:1px solid var(--line); }
-.suggest-label { flex:none; color:var(--muted); font:500 10px "DM Mono",monospace; letter-spacing:.08em; text-transform:uppercase; }
-.suggestions { display:flex; flex-wrap:wrap; gap:6px; min-width:0; }
-.suggest-empty { color:var(--muted); font-size:11px; }
-.suggest-chip { display:inline-flex; align-items:baseline; gap:5px; padding:6px 9px; border:1px solid var(--line); border-radius:8px; background:#eeeae0; color:var(--ink); transition:background .15s, border-color .15s, transform .15s; }
-.suggest-chip:hover { border-color:var(--ink); transform:translateY(-1px); }
-.suggest-chip.is-best { border-color:transparent; background:var(--lime); }
-.suggest-chip b { font:700 15px Manrope,sans-serif; letter-spacing:-.02em; }
-.chip-code { color:var(--muted); font:11px "DM Mono",monospace; letter-spacing:.1em; }
-.chip-cost { color:var(--muted); font:9px "DM Mono",monospace; opacity:.8; }
-
-/* --- Interactive Trainer (thu thập mẫu k-NN) --- */
-.trainer { margin-top:14px; padding-top:14px; border-top:1px solid var(--line); }
-.trainer-head { display:flex; align-items:center; justify-content:space-between; color:var(--muted); font:500 10px "DM Mono",monospace; letter-spacing:.1em; }
-.mode-pill { padding:3px 8px; border-radius:999px; background:#e9e7df; color:var(--muted); font-size:10px; letter-spacing:.04em; }
-.mode-pill.is-knn { background:var(--lime); color:var(--ink); }
-.trainer-actions { display:grid; grid-template-columns:repeat(3,1fr); gap:6px; margin-top:9px; }
-.sample-button { padding:9px 4px; border:1px dashed var(--line); border-radius:8px; background:#fbfaf5; color:var(--ink); font-size:11px; font-weight:600; transition:background .15s, border-color .15s; }
-.sample-button:hover { border-color:var(--orange); border-style:solid; background:#ff744614; }
-.trainer-counts { display:flex; align-items:center; gap:12px; margin-top:9px; color:var(--muted); font-size:10px; }
-.trainer-counts b { margin-left:3px; color:var(--ink); font:600 11px "DM Mono",monospace; }
-.trainer-counts .text-button { margin-left:auto; font-size:10px; }
-.trainer-status { margin:8px 0 0; color:var(--muted); font-size:10px; line-height:1.5; }
-
-@media (max-width:720px) { .app-shell{padding:42px 16px 30px}.workspace{grid-template-columns:1fr}.decoder-card{min-height:300px}.guide{grid-template-columns:1fr}.hero{margin-bottom:28px}.suggest-row{flex-wrap:wrap;gap:8px}.sample-button{padding:8px 2px;font-size:10px}.decoded-text{font-size:32px} }
-
+.tip { margin:auto 0 0; padding-top:20px; color:var(--muted); font-size:12px; line-height:1.55; }.guide { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:18px; }.guide div { padding:16px; border:1px solid var(--line); border-radius:13px; background:#eeeae0; }.guide strong { display:block; color:var(--orange); font-size:22px; }.guide span,.guide b { display:block; }.guide span { margin-top:8px; font-size:12px; }.guide b { margin-top:3px; font-size:12px; color:var(--muted); font-weight:500; }
+@media (max-width:720px) { .app-shell{padding:42px 16px 30px}.workspace{grid-template-columns:1fr}.decoder-card{min-height:300px}.guide{grid-template-columns:1fr}.hero{margin-bottom:28px} }
